@@ -9,22 +9,20 @@ export const Wrapper = styled.div`
   border-radius: 20px;
   height: 100%;
 
-  button {
+  .button {
     border-radius: 0 0 20px 20px;
   }
 
-  img {
-    max-height: 250px;
-    object-fit: contain;
+  .img {
+    height: 250px;
     border-radius: 20px 20px 0 0;
   }
 
-  div {
-    font-family: Arial, Helvetica, sans-serif;
+  .div {
     padding: 1rem;
   }
 
-  P {
+  .P {
     overflow-y: auto;
     height: 5rem;
     margin-top: auto;

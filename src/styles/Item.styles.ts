@@ -15,18 +15,22 @@ export const Wrapper = styled.div`
 
   img {
     max-height: 250px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 20px 20px 0 0;
   }
 
   div {
     font-family: Arial, Helvetica, sans-serif;
     padding: 1rem;
-    height: 100%;
+  }
+
+  h3 {
+    margin-top: auto;
   }
 
   P {
     overflow-y: auto;
-    max-height: 5rem;
+    height: 5rem;
+    margin-top: auto;
   }
 `;

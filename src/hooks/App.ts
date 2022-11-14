@@ -10,34 +10,22 @@ const useApp = () => {
 
   const handleCartOpen = (open: boolean) => setCartOpen(open);
 
-  const getProducts = async (): Promise<CartItemType[]> =>
-    await /* for JSON */ (
-      await /* for API calling */
-      fetch("https://fakestoreapi.com/products")
-    ).json();
+  const getProducts = async (): Promise<CartItemType[]> => await /* for JSON */ (await /* for API calling */ fetch("https://fakestoreapi.com/products")).json();
 
-  const { data, isLoading, error } = useQuery<CartItemType[]>(
-    ["products"],
-    getProducts
-  );
+  const { data, isLoading, error } = useQuery<CartItemType[]>(["products"], getProducts);
 
   const getTotalItems = (items: CartItemType[]) =>
     // move items into set of id (set does not have duplicate value) then get the size of that set
     new Set(items.map((item) => item.id)).size;
 
-  const getTotalQuantity = (items: CartItemType[]) =>
-    items.reduce((n: number, item) => n + item.quantity, 0);
+  const getTotalQuantity = (items: CartItemType[]) => items.reduce((n: number, item) => n + item.quantity, 0);
 
   const handleAddToCart = (clickedItem: CartItemType) => {
     setCartItems((prev) => {
       // add the quantity by 1 if the item is already in the cart
       const isItemInCart = prev.find((item) => item.id === clickedItem.id);
       if (isItemInCart) {
-        return prev.map((item) =>
-          item.id === clickedItem.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
+        return prev.map((item) => (item.id === clickedItem.id ? { ...item, quantity: item.quantity + 1 } : item));
       }
       // add the item with quantity of 1 if not yet added to cart
       return [...prev, { ...clickedItem, quantity: 1 }];
@@ -58,18 +46,10 @@ const useApp = () => {
       }, [] as CartItemType[])
     );
   };
-
+  // prettier-ignore
   return {
-    data,
-    isLoading,
-    error,
-    cartOpen,
-    cartItems,
-    getTotalQuantity,
-    getTotalItems,
-    handleCartOpen,
-    handleAddToCart,
-    handleRemoveFromCart,
+    data, isLoading, error, cartOpen, cartItems,
+    getTotalQuantity, getTotalItems, handleCartOpen, handleAddToCart, handleRemoveFromCart,
   };
 };
 

@@ -20,7 +20,7 @@ const App = () => {
     getTotalQuantity, getTotalItems, handleCartOpen, handleAddToCart, handleRemoveFromCart,
   } = useApp();
 
-  if (isLoading) return <Shimmer />;
+  if (isLoading) return <LinearProgress />;
   if (error) return <div>Something went Wrong</div>;
 
   return (
@@ -30,10 +30,8 @@ const App = () => {
         <Cart cartItems={cartItems} addToCart={handleAddToCart} removeFromCart={handleRemoveFromCart} />
       </Drawer>
       <Wrapper>
-        <StyledButton onClick={() => handleCartOpen(true)}>
-          {/* First Badge is for total quantity */}
+        <StyledButton onClick={() => handleCartOpen(true)}> {/* First Badge is for total quantity */} {/* Second Badge is for number of different item */}
           <Badge overlap="rectangular" badgeContent={getTotalQuantity(cartItems)} color="error" anchorOrigin={{ horizontal: "right", vertical: "bottom" }} >
-            {/* Second Badge is for number of different item */}
             <Badge overlap="rectangular" badgeContent={getTotalItems(cartItems)} color="primary" anchorOrigin={{ horizontal: "right", vertical: "top" }} >
               <CartIcon fontSize="large" />
             </Badge>

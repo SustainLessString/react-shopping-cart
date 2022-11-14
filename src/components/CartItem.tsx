@@ -7,11 +7,7 @@ import { CartItemProps } from "@app/types/CartItem.types";
 // Styles
 import { Wrapper } from "@app/styles/CartItem.styles";
 
-const CartItem: React.FC<CartItemProps> = ({
-  item,
-  addToCart,
-  removeFromCart,
-}) => (
+const CartItem: React.FC<CartItemProps> = ({ item, addToCart, removeFromCart }) => (
   <Wrapper>
     <div>
       <h3>{item.title}</h3>
@@ -20,21 +16,11 @@ const CartItem: React.FC<CartItemProps> = ({
         <p>Total: ${(item.quantity * item.price).toFixed(2)}</p>
       </div>
       <div className="button">
-        <Button
-          size="small"
-          disableElevation
-          variant="contained"
-          onClick={() => removeFromCart(item.id)}
-        >
+        <Button size="small" disableElevation variant="contained" onClick={() => removeFromCart(item.id)}>
           -
         </Button>
         <p>{item.quantity}</p>
-        <Button
-          size="small"
-          disableElevation
-          variant="contained"
-          onClick={() => addToCart(item)}
-        >
+        <Button size="small" disableElevation variant="contained" onClick={() => addToCart(item)}>
           +
         </Button>
       </div>
